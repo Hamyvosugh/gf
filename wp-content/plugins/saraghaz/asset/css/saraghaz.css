@@ -1,0 +1,29 @@
+/* General styles for calendar items */
+.calendar-item {
+    font-size: 1.6em !important; /* Default font size for large displays */
+    font-family: Digi Hamishe Bold !important;
+}
+
+@media (max-width: 1200px) {
+    .calendar-item {
+        font-size: 1.25em !important; /* Medium displays */
+    }
+}
+
+@media (max-width: 992px) {
+    .calendar-item {
+        font-size: 1em !important; /* Smaller displays */
+    }
+}
+
+@media (max-width: 768px) {
+    .calendar-item {
+        font-size: 1em !important; /* Tablet displays */
+    }
+}
+
+@media (max-width: 576px) {
+    .calendar-item {
+        font-size: 0.90em !important; /* Mobile displays */
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "name": "khodba/saraghaz",
+    "type": "plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Khodba\\Saraghaz\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hamy vosugh",
+            "email": "hamy.vosugh@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "hekmatinasser/verta": "^8.4"
+    }
+}

@@ -1,0 +1,180 @@
+@font-face {
+    font-family: 'Digi Hamishe';
+    src: url('https://gahshomar.com/wp-content/uploads/2024/08/Digi-Hamishe-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Digi Hamishe';
+    src: url('https://gahshomar.com/wp-content/uploads/2024/08/Digi-Hamishe-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+body {
+    font-family: 'Digi Hamishe', sans-serif;
+}
+
+/* Ensure all form elements use the custom font and styling */
+#gahshomar-converter-wrapper select,
+#gahshomar-converter-wrapper input,
+#gahshomar-converter-wrapper button {
+    font-family: 'Digi Hamishe', sans-serif !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    width: 100% !important;
+    padding: 8px !important;
+    border: 1px solid #ffffff !important;
+    border-radius: 4px !important;
+    box-sizing: border-box;  /* Ensure padding and border are included in the element's width and height */
+}
+
+/* Ensure RTL for form */
+#gahshomar-converter-wrapper {
+    direction: rtl !important;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling for form rows */
+#gahshomar-converter-wrapper .form-row {
+    display: flex !important;
+    flex-direction: column !important; /* Stack inputs vertically */
+    align-items: center !important;
+    margin-bottom: 15px !important;
+    width: 100% !important; /* Ensure full width for each row */
+    padding: 0 !important;
+}
+
+/* Remove any legacy right-side margin */
+.form-row {
+    margin-bottom: 15px;
+    margin-right: 0 !important;
+}
+
+/* Input and Select Field Styling */
+#gahshomar-converter-wrapper input,
+#gahshomar-converter-wrapper select,
+#dropdown-button {
+    text-align: right !important;
+    background-color: #cdd8eb !important;
+    color: black !important;
+    font-family: 'Digi Hamishe', sans-serif !important;
+    font-weight: bold !important;
+}
+
+/* Button styling */
+#gahshomar-converter-wrapper input[type="submit"] {
+    background-color: #5f66a8 !important;
+    color: white !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    width: 100% !important;
+    padding: 8px !important;
+    border: 1px solid #ffffff !important;
+    border-radius: 4px !important;
+    box-sizing: border-box;
+}
+
+#gahshomar-converter-wrapper input[type="submit"]:hover {
+    background-color: #FF8200 !important;
+}
+
+/* Result styling */
+#conversion-result-output {
+    display: flex;
+    justify-content: space-between;
+    direction: rtl;
+    color: white;
+    font-family: 'Digi Hamishe Bold', sans-serif;
+    font-size: 24px;
+    text-align: right;
+    width: 100%;
+}
+
+#conversion-result-output .month,
+#conversion-result-output .day,
+#conversion-result-output .year {
+    flex: 1;
+}
+
+#additional-info-output {
+    font-family: 'Digi Hamishe Bold', sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: right;
+    width: 100%;
+}
+
+/* Dropdown content styling */
+#dropdown-content {
+    margin-top: 2px;
+    width: 100%;
+    position: absolute;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1;
+    max-height: 200px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+#dropdown-content table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    table-layout: fixed;
+}
+
+#dropdown-content td {
+    padding: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    border: 1px solid #555;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+/* Select Box Styling */
+#source_calendar {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ff0000;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 10px;
+    cursor: pointer;
+}
+
+#source_calendar {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+}
+
+#source_calendar option {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+}
+
+/* Title styling */
+#gahshomar-converter-wrapper h2 {
+    text-align: right;
+    font-size: 44px;
+    margin-bottom: 20px;
+    color: red;
+}
+
+.Elementor_Conversion_Result_Widget {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 56px;
+}
+

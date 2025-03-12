@@ -1,0 +1,20 @@
+Explanation:
+
+	1.	Chinese Zodiac Section:
+	•	Private static arrays for animals and elements.
+	•	Public static methods getChineseZodiacAnimal and getChineseZodiacElement.
+	2.	Hindu Calendar Section:
+	•	Private static array for year names.
+	•	Public static method getHinduYearName.
+	3.	Birthstones Section:
+	•	Private static array for birthstones.
+	•	Public static method getBirthstone.
+	4.	Western Zodiac Section:
+	•	Private static array for zodiac signs.
+	•	Public static method getWesternZodiacSign.
+	5.	Zoroastrian Day Names Section:
+	•	Private static array for day names.
+	•	Public static method getZoroastrianDayName.
+	6.	Leap Year Methods:
+	•	Public static methods isGregorianLeapYear and isJalaaliLeapYear.
+

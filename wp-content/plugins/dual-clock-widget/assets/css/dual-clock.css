@@ -1,0 +1,182 @@
+@font-face {
+    font-family: 'Digi Hamishe';
+    src: url('https://gahshomar.com/wp-content/uploads/2024/08/Digi-Hamishe-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.dcw-timezone-wrapper {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+ }
+ 
+ #dcw-timezone-select {
+    text-align: center !important;
+    direction: rtl !important;
+    font-family: 'Digi Hamishe bold', sans-serif;
+    width: 100%;
+    
+    font-size: 1.2em;
+    background-color: transparent;
+    border: 1px;
+    color: var(--dcw-timezone-select-text);
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 15px;
+    box-sizing: border-box;
+    top:0;
+
+ }
+
+#dcw-timezone-select:hover {
+    animation: pulse 1s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        padding: 5px 10px;
+        background-color: orange;
+        color: white;
+    }
+    50% {
+        padding: 6px 11px;
+        background-color: white;
+        color: orange;
+        border-radius: 15px;
+    }
+}
+
+#dcw-timezone-select option {
+    text-align: right;
+    white-space: pre-wrap;
+    z-index: 1000;
+}
+
+.dcw-clock-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+  
+    
+}
+
+#dcw-local-time.dcw-clock, #dcw-international-time.dcw-clock {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    background-color: transparent;
+    background-image: var(--bg-local-dark); /* Background image for clocks */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.dcw-clock-logo {
+    content: var(--src-dcw-clock-logo);
+    position: absolute;
+    top: 30px;
+    width: 50px;
+    height: auto;
+    opacity: 80%;
+}
+
+.dcw-digital-clock {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1em;
+    font-family:'Quicksand', sans-serif;
+    font-weight: bold;
+    z-index: 1;
+    color: var(--dcw-digital-clock-text);
+}
+
+.dcw-clock .dcw-hour-hand , .dcw-clock .dcw-minute-hand, .dcw-clock .dcw-second-hand {
+    position: absolute;
+    bottom: 50%;
+    transform-origin: bottom;
+    transform: rotate(0deg);
+    z-index: 2;
+}
+
+.dcw-clock .dcw-hour-hand  {
+    width: 8px;
+    height: 100px;
+    background: var(--hour-hand-background);
+    background-color: transparent;
+    border-radius: 2px 2px 0 0;
+    scale: 50%;
+}
+
+.dcw-clock .dcw-minute-hand {
+    width: 10px;
+    height: 95%;
+    background: var(--minute-hand-background);
+    background-color: transparent;
+    border-radius: 2px 2px 0 0;
+    scale: 50%;
+}
+
+.dcw-clock .dcw-second-hand {
+    width: 2px;
+    height: 70px;
+    background-color: var(--second-hand-color);
+    border-radius: 2px 2px 0 0;
+}
+
+
+
+:root {
+    --border-color: #333863;
+    --border-size: 20px;
+    --background-color: #f3f3f3;
+    --hour-hand-color: #ffffff;
+    --minute-hand-color: #ffffff;
+    --second-hand-color: #f5f5f5;
+    --bg-local-dark: url('https://gahshomar.com/wp-content/uploads/2024/08/background-clockface-darkmode-01.svg');
+    --bg-int-dark: url('https://gahshomar.com/wp-content/uploads/2024/08/background-clockface-darkmode-01.svg');
+    --hour-hand-background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-4.svg') no-repeat center/cover, transparent;
+    --minute-hand-background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-2.svg') no-repeat center/cover, transparent;
+    --src-dcw-clock-logo: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-6.svg');
+    --dcw-timezone-select-text: rgb(255, 255, 255);
+    --dcw-digital-clock-text: white;
+}
+
+.dcw-clock .dcw-center-circle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-8.svg') no-repeat center/cover, transparent; 
+    background-color: transparent;
+    border: 1px solid rgb(55, 55, 55);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+
+
+.dcw-location-name {
+    font-family: 'Digi Hamishe bold', sans-serif;
+    font-size: 1.2em;
+    color: var(--dcw-digital-clock-text);
+    text-align: center;
+}
+
+
+

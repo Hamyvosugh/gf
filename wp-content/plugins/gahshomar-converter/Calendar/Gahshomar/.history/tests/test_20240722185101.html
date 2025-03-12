@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run PHPUnit Tests</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        pre { background-color: #f4f4f4; padding: 20px; border: 1px solid #ddd; }
+        #result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Run PHPUnit Tests</h1>
+    <button id="runTests">Run Tests</button>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('runTests').addEventListener('click', function() {
+            fetch('run_tests.php')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('result').innerHTML = `<pre>${data}</pre>`;
+                });
+        });
+    </script>
+</body>
+</html>

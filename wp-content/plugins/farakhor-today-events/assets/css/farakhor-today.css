@@ -1,0 +1,94 @@
+/* assets/css/farakhor-today.css */
+.farakhor-today-events-wrapper {
+    font-family: 'Digi Hamishe Regular', sans-serif;
+    direction: rtl;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.farakhor-today-header {
+    border-bottom: 2px solid #4D5597;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.farakhor-today-header h3 {
+    color: #333;
+    margin: 0;
+    font-size: 16px;
+}
+
+.farakhor-today-events-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.farakhor-today-event-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+.farakhor-today-event-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.farakhor-today-event-title {
+    flex: 1;
+}
+
+.farakhor-today-event-title h4 {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.farakhor-private-badge {
+    display: inline-block;
+    background-color: #6c757d;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.farakhor-today-more-link {
+    color: #4D5597;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.farakhor-no-events p {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .farakhor-today-events-wrapper {
+        padding: 8px;
+    }
+    
+    .farakhor-today-event-item {
+        padding: 8px;
+    }
+    
+    .farakhor-today-event-title h4 {
+        font-size: 13px;
+    }
+}

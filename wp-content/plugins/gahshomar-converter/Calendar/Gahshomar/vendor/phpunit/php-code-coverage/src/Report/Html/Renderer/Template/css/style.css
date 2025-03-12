@@ -1,0 +1,193 @@
+body {
+    font-family: sans-serif;
+    font-size: 1em;
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures;
+    text-rendering: optimizeLegibility;
+    padding-top: 10px;
+}
+
+.popover {
+    max-width: none;
+}
+
+.octicon {
+    margin-right: .25em;
+    vertical-align: baseline;
+    width: 0.75em;
+}
+
+.table-bordered > thead > tr > td {
+    border-bottom-width: 1px;
+}
+
+.table tbody > tr > td, .table thead > tr > td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.table-condensed tbody > tr > td {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.table .progress {
+    margin-bottom: inherit;
+}
+
+.table-borderless th, .table-borderless td {
+    border: 0 !important;
+}
+
+/* Replace placeholders with actual colors or variables */
+.table tbody tr.covered-by-large-tests,
+li.covered-by-large-tests,
+tr.success,
+td.success,
+li.success,
+span.success {
+    background-color: var(--success-low, #e6ffcc); /* Fallback to a default color */
+}
+
+.table tbody tr.covered-by-medium-tests, li.covered-by-medium-tests {
+    background-color: var(--success-medium, #ccff99); /* Fallback to a default color */
+}
+
+.table tbody tr.covered-by-small-tests, li.covered-by-small-tests {
+    background-color: var(--success-high, #b3ff66); /* Fallback to a default color */
+}
+
+.table tbody tr.warning, .table tbody td.warning, li.warning, span.warning {
+    background-color: var(--warning, #ffcc00); /* Fallback to a default color */
+}
+
+.table tbody tr.danger, .table tbody td.danger, li.danger, span.danger {
+    background-color: var(--danger, #ff6666); /* Fallback to a default color */
+}
+
+.table tbody td.info {
+    background-color: #d9edf7;
+}
+
+td.big {
+    vertical-align: middle;
+    width: 117px;
+}
+
+td.small {
+    /* Intentionally left blank */
+}
+
+td.codeLine {
+    font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    white-space: pre-wrap;
+}
+
+td span.comment {
+    color: #888a85;
+}
+
+td span.default {
+    color: #2e3436;
+}
+
+td span.html {
+    color: #888a85;
+}
+
+td span.keyword {
+    color: #2e3436;
+    font-weight: bold;
+}
+
+pre span.string {
+    color: #2e3436;
+}
+
+span.success, span.warning, span.danger {
+    margin-right: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+#toplink {
+    position: fixed;
+    left: 5px;
+    bottom: 5px;
+    outline: 0;
+}
+
+svg text {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #666;
+    fill: #666;
+}
+
+.scrollbox {
+    height: 245px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+table + .structure-heading {
+    border-top: 1px solid lightgrey;
+    padding-top: 0.5em;
+}
+
+.legend {
+    font-weight: bold;
+    margin-right: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+/* Assign default colors in case placeholders aren't replaced */
+.covered-by-small-tests {
+    background-color: var(--success-high, #b3ff66);
+}
+
+.covered-by-medium-tests {
+    background-color: var(--success-medium, #ccff99);
+}
+
+.covered-by-large-tests {
+    background-color: var(--success-low, #e6ffcc);
+}
+
+.not-covered {
+    background-color: var(--danger, #ff6666);
+}
+
+.not-coverable {
+    background-color: var(--warning, #ffcc00);
+}
+
+/* Make form elements and tables full width */
+form, .form-control, .form-group, .btn, table {
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't affect the width */
+    margin: 0; /* Removes any margins that might be shrinking the width */
+    padding: 10px; /* Optional: adjust padding as needed */
+}
+
+/* Remove padding on the container to ensure elements take full width */
+.container {
+    padding: 0;
+    margin: 0;
+}
+
+/* Ensure the container takes full width of the viewport */
+.container-fluid {
+    width: 100%;
+    padding: 0;
+}
+
+/* Adjust button styles for full-width */
+.btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px; /* Optional: adjust spacing between buttons */
+}

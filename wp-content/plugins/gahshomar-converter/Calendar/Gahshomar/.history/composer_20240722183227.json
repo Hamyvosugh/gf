@@ -1,0 +1,10 @@
+{
+    "name": "yourusername/gahshomar",
+    "description": "A PHP package to handle Jalaali (Persian) calendar dates",
+    "autoload": {
+        "psr-4": {
+            "Gahshomar\\": "src/"
+        }
+    },
+    "require": {}
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run Date Conversion Tests</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        pre { background-color: #f4f4f4; padding: 20px; border: 1px solid #ddd; }
+        #result { margin-top: 20px; }
+        input, select { margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>تست تقویم کاهشمار</h1>
+    <form id="dateForm">
+        <label for="gy">Year:</label>
+        <input type="number" id="gy" name="gy" value="545" required>
+        <label for="gm">Month:</label>
+        <input type="number" id="gm" name="gm" value="4" required>
+        <label for="gd">Day:</label>
+        <input type="number" id="gd" name="gd" value="12" required>
+        <label for="calendar">Calendar:</label>
+        <select id="calendar" name="calendar">
+            <option value="شاهنشاهی">شاهنشاهی</option>
+            <option value="ایلامی">ایلامی</option>
+            <option value="زرتشتی">زرتشتی</option>
+            <option value="کردی">کردی</option>
+            <option value="ایران نو">ایران نو</option>
+        </select>
+        <button type="submit">Convert Date</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('dateForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const gy = document.getElementById('gy').value;
+            const gm = document.getElementById('gm').value;
+            const gd = document.getElementById('gd').value;
+            const calendar = document.getElementById('calendar').value;
+            fetch(`run_tests.php?gy=${gy}&gm=${gm}&gd=${gd}&calendar=${calendar}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('result').innerHTML = `<pre>${data}</pre>`;
+                })
+                .catch(error => {
+                    document.getElementById('result').innerHTML = `<pre>Error: ${error}</pre>`;
+                });
+        });
+    </script>
+</body>
+</html>

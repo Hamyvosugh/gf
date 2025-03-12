@@ -1,0 +1,19 @@
+
+/* Tabari Date Plugin Styles */
+.tabari-date {
+    font-family: Tahoma, Arial, sans-serif;
+    direction: rtl;
+    padding: 5px 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.tabari-date-widget {
+    font-family: Tahoma, Arial, sans-serif;
+    direction: rtl;
+    text-align: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}

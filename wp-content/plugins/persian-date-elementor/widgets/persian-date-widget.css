@@ -1,0 +1,51 @@
+:root {
+    --persian-date-color: #ffffff; /* Default color for dark mode */
+    --persian-month-color: #ffffff;
+    --persian-day-color: #ffffff;
+    --persian-day-of-week-color: #dcdcdc;
+}
+
+.persian-date {
+    text-align: center;
+    font-size: 1.5em; /* Adjusted font size */
+    color: var(--persian-date-color); /* Use variable color */
+    font-family: 'Digi Hamishe', sans-serif !important;
+    width: 100%; /* Ensure it takes the full width */
+    background-color: transparent; /* Transparent background */
+}
+
+.persian-date .first-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.persian-month {
+    font-size: 2em; /* Adjusted font size */
+    font-weight: bold;
+    background-color: transparent; /* Transparent background */
+    color: var(--persian-month-color); /* Use variable color */
+    margin-right: 10px; /* Adjust margin between elements */
+}
+
+.persian-day {
+    font-size: 60px; /* Adjusted font size */
+    font-weight: bold;
+    color:white !important; /* Use variable color */
+    background-color: transparent; /* Transparent background */
+}
+
+.persian-day-of-week {
+    font-size: 25px; /* Adjusted font size */
+    color: var(--persian-day-of-week-color); /* Use variable color */
+    margin-top: 10px;
+    font-weight: bold;
+    background-color: transparent; /* Transparent background */
+    text-align: center;
+}
+
+.persian-date span {
+    display: inline-block;
+    background-color: transparent; /* Transparent background */
+}
+

@@ -1,0 +1,6 @@
+لیبل های جدول
+                    <label for="source_calendar">از گاهشماری:</label>
+                    <label for="day">روز:</label>
+                    <label for="month">ماه:</label>
+                    <label for="year">سال:</label>
+                    <label for="target_calendar">به گاهشماری:</label>

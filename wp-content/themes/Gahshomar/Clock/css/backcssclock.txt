@@ -1,0 +1,342 @@
+@font-face {
+    font-family: 'Digi Hamishe';
+    src: url('https://gahshomar.com/wp-content/uploads/2024/08/Digi-Hamishe-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#timezone-select {
+    text-align: center; /* Center-align text */
+    font-family: 'Digi Hamishe bold', sans-serif;
+    height: auto; /* Adjust height to fit content */
+    padding: 5px 10px; /* Add padding for better appearance */
+    font-size: 1.2em; /* Adjust the font size */
+    width: auto; /* Ensure it adjusts to the content */
+    min-width: 150px; /* Set a minimum width to ensure readability */
+    max-width: 100%; /* Allow it to be responsive */
+    background-color: transparent; /* Make background transparent */
+    border: 1px; /* Remove border */
+    color: var(--timezone-select-text);
+    outline: none; /* Remove outline */
+    -webkit-appearance: none; /* Remove default appearance on WebKit browsers */
+    -moz-appearance: none; /* Remove default appearance on Mozilla browsers */
+    appearance: none; /* Remove default appearance */
+    position: absolute;
+    top: 22px; /* Position slightly lower */
+    left: 55%; /* Position slightly to the right */
+    transform: translateX(-55%); /* Adjust for horizontal centering */
+    line-height: 1.5; /* Adjust line height for spacing */
+    cursor: pointer; /* Change cursor to hand on hover */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+    border-radius: 15px;
+}
+
+#timezone-select:hover {
+    animation: pulse 1s infinite ease-in-out; /* Apply pulsing effect on hover */
+}
+
+@keyframes pulse {
+    0%, 100% {
+        padding: 5px 10px; /* Default padding */
+        background-color: orange; /* Start with orange */
+        color: white; /* Text color */
+    }
+    50% {
+        padding: 6px 11px; /* Slightly increase padding to simulate zoom */
+        background-color: white; /* Change background to white */
+        color: orange; /* Text color change */
+        border-radius: 15px;
+    }
+}
+
+#timezone-select option {
+    text-align: center; /* Center-align text within options */
+    white-space: pre-wrap; /* Allow wrapping within the option */
+}
+
+
+
+.clock-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: auto;
+    padding: 10px 0 20px 20px; /* Small padding at top, larger gap at bottom */
+    box-sizing: border-box;
+    position: absolute;
+    top: 40;
+    left: 0;
+    z-index: 10; /* Ensure clocks are above other elements but below menu */
+}
+
+#local-time.clock {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    background-color: transparent;
+    background-image: var(--bg-local-dark) , var(--bg-local-light);
+    
+    background-size: cover; /* Ensure the background image covers the entire clock */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px; /* Small gap between clocks */
+}
+
+#international-time.clock {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    background-color: transparent;
+    background-image: var(--bg-int-dark) , var(--bg-int-light);   
+    background-size: cover; /* Ensure the background image covers the entire clock */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px; /* Small gap between clocks */
+}
+
+.clock-logo {
+    content: var(--src-clock-logo);
+    position: absolute;
+    top: 30px;
+    width: 50px;
+    height: auto;
+    opacity: 80%;
+}
+
+
+
+
+.digital-clock {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1em;
+    font-family:'Quicksand', sans-serif;
+    font-weight: bold;
+    z-index: 1;
+    color: var( --digital-clock-text);
+
+}
+
+.clock .hour-hand, .clock .minute-hand, .clock .second-hand {
+    position: absolute;
+    bottom: 50%;
+    transform-origin: bottom;
+    transform: rotate(0deg);
+    z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+.clock .hour-hand {
+    width: 8px;
+    height: 100px; /* Smaller height for the hour hand */
+    background: var(--hour-hand-backgournd);
+    background-color: transparent;
+    border-radius: 2px 2px 0 0;
+    scale: 50%;
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.clock .minute-hand {
+    width: 10px;
+    height: 95%; /* Smaller height for the minute hand */
+    background: var(--minute-hand-background);
+    background-color: transparent;
+    border-radius: 2px 2px 0 0; /* Apply rounded corners only to the top corners */
+    scale: 50%;
+ 
+}
+
+.clock .second-hand {
+    width: 2px;
+    height: 70px; /* Smaller height for the second hand */
+    background-color: var(--second-hand-color);
+    border-radius: 2px 2px 0 0;
+}
+
+/* Responsive for medilum, tablet and labtop  */
+@media (max-width: 796px) and (min-width: 654px)  {
+    .clock-container {
+        flex-wrap: wrap; /* Allow wrapping in this media query range */
+    }
+    
+    #local-time.clock {
+        width: 100px;
+        height: 100px;
+    }
+    #international-time.clock {
+        width: 100px;
+        height: 100px;
+    }
+    .clock-logo {
+        top: 20px;
+        width: 40px;
+    }
+    .digital-clock {
+        bottom: 18px;
+        font-size: 0.8em;
+    }
+    .clock .hour-hand {
+      height:75px;
+      width:5px;
+    }
+    .clock .minute-hand {
+        height:90px; 
+        width:5px; 
+     }
+    .clock .second-hand {
+        height: 45px; /* Smaller height for the second hand */
+        width: 1px;
+    }
+    #timezone-select {
+        font-size: 0.8em; /* Adjust font size for smaller screens */
+        top: 12px; /* Adjust top position for smaller screens */
+        left: 52%; /* Adjust left position for smaller screens */
+        transform: translateX(-52%); /* Adjust for horizontal centering */
+    }  
+}
+
+/* Responsive for small display  */
+
+@media (max-width: 655px) and (min-width: 50px)  {
+
+    
+    
+        #local-time.clock {
+        width: 100px;
+        height: 100px;
+
+    }
+    #international-time.clock {
+        width: 100px;
+        height: 100px;
+    }
+    .clock-logo {
+        top: 20px;
+        width: 40px;
+    }
+    .digital-clock {
+        bottom: 18px;
+        font-size: 0.8em;
+    }
+    .clock .hour-hand {
+      height:75px;
+      width:5px;
+    }
+    .clock .minute-hand {
+        height:90px; 
+        width:5px; 
+     }
+    .clock .second-hand {
+        height: 45px; /* Smaller height for the second hand */
+        width: 1px;
+    }
+    #timezone-select {
+        font-size: 0.8em; /* Adjust font size for smaller screens */
+        top: 12px; /* Adjust top position for smaller screens */
+        left: 52%; /* Adjust left position for smaller screens */
+        transform: translateX(-52%); /* Adjust for horizontal centering */
+    }  
+}
+
+:root {
+    --border-color: #333;
+    --border-size: 5px;
+    --background-color: #fff;
+    --hour-hand-color: #333;
+    --minute-hand-color: #666;
+    --second-hand-color: #888;
+    --bg-local-dark: url('https://gahshomar.com/wp-content/uploads/2024/08/background-clockface-darkmode-01.svg');
+    --bg-local-light: url('https://gahshomar.com/wp-content/uploads/2024/08/clockface-light-gahshomar-01.svg');
+    --bg-int-dark: url('https://gahshomar.com/wp-content/uploads/2024/08/background-clockface-darkmode-01.svg');
+    --bg-int-light: url('https://gahshomar.com/wp-content/uploads/2024/08/clockface-light-gahshomar-01.svg');
+    --hour-hand-background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-10.svg') no-repeat center/cover, transparent;
+    --minute-hand-background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-11.svg') no-repeat center/cover, transparent;
+    --src-clock-logo: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-13.svg');
+    --timezone-select-text: black;
+    --digital-clock-text: white;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    --border-color: #333863;
+    --border-size: 20px;
+    --background-color: #f3f3f3;
+    --hour-hand-color: #ffffff;
+    --minute-hand-color: #ffffff;
+    --second-hand-color: #f5f5f5;
+    --hand-gradient-start: #d4af37;
+    --hand-gradient-end: #f1c40f;
+    --hand-border-color: #a57c00;
+    --bg-local-dark: url('https://gahshomar.com/wp-content/uploads/2024/08/background-clockface-darkmode-01.svg');
+    --bg-int-dark: url('https://gahshomar.com/wp-content/uploads/2024/08/background-clockface-darkmode-01.svg');
+    --hour-hand-background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-4.svg') no-repeat center/cover, transparent;
+    --minute-hand-background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-2.svg') no-repeat center/cover, transparent;
+    --src-clock-logo: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-6.svg');
+    --timezone-select-text: rgb(255, 255, 255);
+}
+
+/* Light Mode */
+body.light-mode {
+    --border-color: #333863;
+    --background-color: #f3f3f300;
+    --hour-hand-color: #333863;
+    --minute-hand-color: #333863;
+    --second-hand-color: #333863;
+    --bg-local-light: url('https://gahshomar.com/wp-content/uploads/2024/08/clockface-light-gahshomar-01.svg');
+    --bg-int-light: url('https://gahshomar.com/wp-content/uploads/2024/08/clockface-light-gahshomar-01.svg');
+    --hour-hand-background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-10.svg') no-repeat center/cover, transparent;
+    --minute-hand-background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-11.svg') no-repeat center/cover, transparent;
+    --src-clock-logo: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-13.svg');
+    --timezone-select-text: #333863;
+    --digital-clock-text: #333863;
+}
+
+
+
+
+.clock .center-circle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-8.svg') no-repeat center/cover, transparent; 
+    background-color: transparent;
+    border: 1px solid rgb(55, 55, 55);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100; /* Ensure it is above the clock hands */
+}
+

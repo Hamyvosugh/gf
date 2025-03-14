@@ -1,0 +1,78 @@
+<?php
+/**
+ * Description: A section to display events from the wp_farakhor table in a grid card style.
+ * Version: 1.0
+ * Author: Your Name
+ */
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+// Load WordPress dependencies
+require_once($_SERVER['DOCUMENT_ROOT'] . '/wp-load.php');
+
+// Register the assets
+if (!function_exists('edp_register_assets')) {
+    function edp_register_assets() {
+        wp_enqueue_style('edp-style', get_stylesheet_directory_uri() . '/farakhor/assets/css/farakhor.css');
+        wp_enqueue_script('edp-script', get_stylesheet_directory_uri() . '/farakhor/assets/js/Farakhor.js', array('jquery'), null, true);
+        wp_localize_script('edp-script', 'edpAjax', array(
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('load_more_events_nonce')
+        ));
+    }
+    add_action('wp_enqueue_scripts', 'edp_register_assets');
+}
+
+// Enqueue the assets when needed
+if (!function_exists('load_farakhor_assets')) {
+    function load_farakhor_assets() {
+        global $post;
+        if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'display_farakhor_events')) {
+            wp_enqueue_style('farakhor-style');
+            wp_enqueue_script('farakhor-script');
+        }
+    }
+    add_action('wp_enqueue_scripts', 'load_farakhor_assets');
+}
+
+// Function to fetch events from the database
+if (!function_exists('farakhor_fetch_events')) {
+    function farakhor_fetch_events() {
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'farakhor';
+        $results = $wpdb->get_results("SELECT * FROM $table_name WHERE module = 'YES' ORDER BY gregorian_day ASC");
+        return $results;
+    }
+}
+
+// Shortcode to display events
+if (!function_exists('farakhor_display_events')) {
+    function farakhor_display_events() {
+        ob_start();
+        include get_stylesheet_directory() . '/farakhor/templates/farakhor-template.php';
+        return ob_get_clean();
+    }
+    add_shortcode('display_farakhor_events', 'farakhor_display_events');
+}
+
+// Utility function to convert English numbers to Persian
+if (!function_exists('convertNumbersToPersian')) {
+    function convertNumbersToPersian($string) {
+        $persian_numbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        $english_numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        return str_replace($english_numbers, $persian_numbers, $string);
+    }
+}
+
+// Include the Verta library from the root directory
+if (!function_exists('include_verta_library')) {
+    function include_verta_library() {
+        require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
+    }
+}
+
+// Call the Verta library integration
+include_verta_library();
+?>

@@ -1,0 +1,21 @@
+{
+    "name": "gahomar/time-zone-widget",
+    "description": "A WordPress theme with a time zone widget and Jalali calendar support",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Gahomar\\TimeZoneWidget\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hamy vosugh",
+            "email": "hamy.vosugh@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "hekmatinasser/verta": "^8.4"
+    }
+}

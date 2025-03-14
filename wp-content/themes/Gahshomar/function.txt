@@ -1,0 +1,218 @@
+<?php
+/**
+ * Theme functions and definitions.
+ *
+ * For additional information on potential customization options,
+ * read the developers' documentation:
+ *
+ * https://developers.elementor.com/docs/hello-elementor-theme/
+ *
+ * @package HelloElementorChild
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+define( 'HELLO_ELEMENTOR_CHILD_VERSION', '2.0.0' );
+
+/**
+ * Load child theme scripts & styles.
+ *
+ * @return void
+ */
+function hello_elementor_child_scripts_styles() {
+
+	wp_enqueue_style(
+		'hello-elementor-child-style',
+		get_stylesheet_directory_uri() . '/style.css',
+		[
+			'hello-elementor-theme-style',
+		],
+		HELLO_ELEMENTOR_CHILD_VERSION
+	);
+
+}
+add_action( 'wp_enqueue_scripts', 'hello_elementor_child_scripts_styles', 20 );
+
+//+++++++++++++++++++++++++++++++++++++++++
+/**
+ * Enqueue footer styles
+ */
+function gahshomar_footer_styles() {
+	wp_enqueue_style(
+		'gahshomar-footer',
+		get_stylesheet_directory_uri() . '/assets/css/footer.css',
+		[],
+		HELLO_ELEMENTOR_CHILD_VERSION
+	);
+}
+add_action('wp_enqueue_scripts', 'gahshomar_footer_styles');
+
+//+++++++++++++++++++++++++++++++++++++++++
+/**
+ * Enqueue clock scripts and styles
+ */
+function gahshomar_clock_assets() {
+	wp_enqueue_script(
+		'gahshomar-timezones',
+		get_stylesheet_directory_uri() . '/Clock/js/timezones.js',
+		[],
+		HELLO_ELEMENTOR_CHILD_VERSION,
+		true
+	);
+
+	wp_enqueue_script(
+		'gahshomar-clock',
+		get_stylesheet_directory_uri() . '/Clock/js/clock.js',
+		['gahshomar-timezones'],
+		HELLO_ELEMENTOR_CHILD_VERSION,
+		true
+	);
+
+	wp_enqueue_style(
+		'gahshomar-clock-styles',
+		get_stylesheet_directory_uri() . '/Clock/css/styles.css',
+		[],
+		HELLO_ELEMENTOR_CHILD_VERSION
+	);
+}
+add_action('wp_enqueue_scripts', 'gahshomar_clock_assets');
+
+
+
+//+++++++++++++++++++++++++++++++++++++++++ Add Jalali calendar
+require_once get_stylesheet_directory() . '/inc/jallali-calendar/persian-jalali-calendar.php';
+
+// Add action for logged-in users
+add_action('wp_ajax_load_template', 'custom_load_template');
+// Add action for non-logged-in users
+add_action('wp_ajax_nopriv_load_template', 'custom_load_template');
+
+// Enqueue Jalali Calendar assets
+function gahshomar_jallali_calendar_assets() {
+    wp_enqueue_style(
+        'pjc-styles',
+        get_stylesheet_directory_uri() . '/inc/jallali-calendar/assets/css/pjc-style.css',
+        [],
+        HELLO_ELEMENTOR_CHILD_VERSION
+    );
+    
+    wp_enqueue_script(
+        'pjc-script',
+        get_stylesheet_directory_uri() . '/inc/jallali-calendar/assets/js/pjc-script.js',
+        ['jquery'],  // Added jQuery dependency since the script uses it
+        HELLO_ELEMENTOR_CHILD_VERSION,
+        true
+    );
+    
+    // Localize script to provide AJAX URL
+    wp_localize_script('pjc-script', 'pjcAjax', array(
+        'ajax_url' => admin_url('admin-ajax.php')
+    ));
+}
+add_action('wp_enqueue_scripts', 'gahshomar_jallali_calendar_assets');
+
+// Handle AJAX requests for calendar day events and updates
+add_action('wp_ajax_pjc_get_day_events', 'pjc_get_day_events');
+add_action('wp_ajax_nopriv_pjc_get_day_events', 'pjc_get_day_events');
+
+add_action('wp_ajax_pjc_update_calendar', 'pjc_update_calendar');
+add_action('wp_ajax_nopriv_pjc_update_calendar', 'pjc_update_calendar');
+
+add_action('wp_ajax_get_current_jalali', 'get_current_jalali');
+add_action('wp_ajax_nopriv_get_current_jalali', 'get_current_jalali');
+
+add_action('wp_ajax_convert_to_tabari', 'convert_to_tabari_ajax');
+add_action('wp_ajax_nopriv_convert_to_tabari', 'convert_to_tabari_ajax');
+
+
+
+// اضافه کردن بخش فراخور //
+function enqueue_farakhor_assets() {
+    // Register CSS
+    wp_register_style('farakhor-style', get_stylesheet_directory_uri() . '/farakhor/assets/css/farakhor.css');
+    
+    // Register JS
+    wp_register_script('farakhor-script', get_stylesheet_directory_uri() . '/farakhor/assets/js/Farakhor.js', array('jquery'), null, true);
+    wp_localize_script('farakhor-script', 'edpAjax', array(
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('load_more_events_nonce')
+    ));
+}
+
+// Enqueue the registered assets when needed
+function load_farakhor_assets() {
+    global $post;
+
+    // Enqueue the CSS and JS if the shortcode is present on the page
+    if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'display_farakhor_events')) {
+        wp_enqueue_style('farakhor-style');
+        wp_enqueue_script('farakhor-script');
+    }
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_farakhor_assets');
+add_action('wp_enqueue_scripts', 'load_farakhor_assets');
+
+// Ensure the Farakhor shortcode is loaded from the child theme
+require_once get_stylesheet_directory() . '/farakhor/farakhor.php';
+
+
+
+// loop page 
+function filter_events_for_next_week($query) {
+    // بررسی اینکه این کوئری مربوط به Query ID ما است
+    if (isset($query->query_vars['post_type']) && $query->query_vars['post_type'] === 'event') {
+        // تاریخ امروز
+        $today = date('Y-m-d');
+        // تاریخ هفت روز آینده
+        $next_week = date('Y-m-d', strtotime('+7 days'));
+
+        // فیلتر کردن پست‌ها بر اساس تاریخ میلادی
+        $query->set('meta_query', array(
+            array(
+                'key' => 'gregorian_day', // کلید فیلد ACF برای تاریخ میلادی
+                'value' => array($today, $next_week),
+                'compare' => 'BETWEEN',
+                'type' => 'DATE',
+            )
+        ));
+
+        // مرتب‌سازی بر اساس تاریخ
+        $query->set('orderby', 'meta_value');
+        $query->set('meta_key', 'gregorian_day'); // کلید تاریخ میلادی
+        $query->set('order', 'ASC');
+    }
+}
+add_action('elementor/query/filter_events_7', 'filter_events_for_next_week');
+
+function filter_events_for_next_month($query) {
+    // بررسی اینکه این کوئری مربوط به Query ID ما است
+    if (isset($query->query_vars['post_type']) && $query->query_vars['post_type'] === 'event') {
+        // تاریخ امروز
+        $today = date('Y-m-d');
+        // تاریخ هفت روز آینده
+        $next_month = date('Y-m-d', strtotime('+30 days'));
+
+        // فیلتر کردن پست‌ها بر اساس تاریخ میلادی
+        $query->set('meta_query', array(
+            array(
+                'key' => 'gregorian_day', // کلید فیلد ACF برای تاریخ میلادی
+                'value' => array($today, $next_month),
+                'compare' => 'BETWEEN',
+                'type' => 'DATE',
+            )
+        ));
+
+        // مرتب‌سازی بر اساس تاریخ
+        $query->set('orderby', 'meta_value');
+        $query->set('meta_key', 'gregorian_day'); // کلید تاریخ میلادی
+        $query->set('order', 'ASC');
+    }
+}
+add_action('elementor/query/filter_events_30', 'filter_events_for_next_month');
+
+
+
+

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '2a7c6c5cb8955eb2d34ad0c85affae83174d4935',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '62e1d2f810307ad6304e3cd0865e54f05de6318d',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '2a7c6c5cb8955eb2d34ad0c85affae83174d4935',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '62e1d2f810307ad6304e3cd0865e54f05de6318d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -92,9 +92,9 @@
             'dev_requirement' => false,
         ),
         'hekmatinasser/verta' => array(
-            'pretty_version' => 'v8.4.1',
-            'version' => '8.4.1.0',
-            'reference' => 'f3b3f43da1f9eb7e0e8d751cc8aa46d324875dcb',
+            'pretty_version' => 'v8.5',
+            'version' => '8.5.0.0',
+            'reference' => '754307385c8576eb295adea0e3345c089314b60a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../hekmatinasser/verta',
             'aliases' => array(),

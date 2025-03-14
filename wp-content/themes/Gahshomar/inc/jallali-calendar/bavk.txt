@@ -1,0 +1,43 @@
+require_once get_stylesheet_directory() . '/inc/jallali-calendar/persian-jalali-calendar.php';
+
+// Add action for logged-in users
+add_action('wp_ajax_load_template', 'custom_load_template');
+// Add action for non-logged-in users
+add_action('wp_ajax_nopriv_load_template', 'custom_load_template');
+
+// Enqueue Jalali Calendar assets
+function gahshomar_jallali_calendar_assets() {
+    wp_enqueue_style(
+        'pjc-styles',
+        get_stylesheet_directory_uri() . '/inc/jallali-calendar/assets/css/pjc-style.css',
+        [],
+        HELLO_ELEMENTOR_CHILD_VERSION
+    );
+    
+    wp_enqueue_script(
+        'pjc-script',
+        get_stylesheet_directory_uri() . '/inc/jallali-calendar/assets/js/pjc-script.js',
+        ['jquery'],  // Added jQuery dependency since the script uses it
+        HELLO_ELEMENTOR_CHILD_VERSION,
+        true
+    );
+    
+    // Localize script to provide AJAX URL
+    wp_localize_script('pjc-script', 'pjcAjax', array(
+        'ajax_url' => admin_url('admin-ajax.php')
+    ));
+}
+add_action('wp_enqueue_scripts', 'gahshomar_jallali_calendar_assets');
+
+// Handle AJAX requests for calendar day events and updates
+add_action('wp_ajax_pjc_get_day_events', 'pjc_get_day_events');
+add_action('wp_ajax_nopriv_pjc_get_day_events', 'pjc_get_day_events');
+
+add_action('wp_ajax_pjc_update_calendar', 'pjc_update_calendar');
+add_action('wp_ajax_nopriv_pjc_update_calendar', 'pjc_update_calendar');
+
+add_action('wp_ajax_get_current_jalali', 'get_current_jalali');
+add_action('wp_ajax_nopriv_get_current_jalali', 'get_current_jalali');
+
+add_action('wp_ajax_convert_to_tabari', 'convert_to_tabari_ajax');
+add_action('wp_ajax_nopriv_convert_to_tabari', 'convert_to_tabari_ajax');

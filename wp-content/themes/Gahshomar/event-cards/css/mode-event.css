@@ -1,0 +1,131 @@
+/* mode-event.css - Optimized */
+
+:root {
+    /* Light mode variables */
+    --light-bg-front: #FFFFFF;
+    --light-bg-back: #F0F0F0;
+    --light-text-primary: #000000;
+    --light-text-secondary: #333333;
+    --light-accent: #FF0000;
+  
+    /* Dark mode variables */
+    --dark-bg-front: #333333;
+    --dark-bg-back: #000000;
+    --dark-text-primary: #FFFFFF;
+    --dark-text-secondary: #CCCCCC;
+    --dark-accent: #FFFF00;
+  }
+  
+  /* Light mode styles */
+  .light-mode .farakhor-flip-card-front {
+    background-color: var(--light-bg-front);
+    color: var(--light-text-primary);
+  }
+  
+  .light-mode .farakhor-flip-card-back {
+    background-color: var(--light-bg-back);
+    color: var(--light-text-primary);
+  }
+  
+  .light-mode .persian-day-event {
+    color: var(--light-accent);
+  }
+  
+  .light-mode .month-event,
+  .light-mode .event-title-event,
+  .light-mode .georgian-event {
+    color: var(--light-text-primary);
+  }
+  
+  .light-mode .text-event {
+    color: var(--light-text-secondary);
+  }
+  
+  /* Dark mode styles */
+  .dark-mode .farakhor-flip-card-front {
+    background-color: var(--dark-bg-front);
+    color: var(--dark-text-primary);
+  }
+  
+  .dark-mode .farakhor-flip-card-back {
+    background-color: var(--dark-bg-back);
+    color: var(--dark-text-primary);
+  }
+  
+  .dark-mode .persian-day-event {
+    color: var(--dark-accent);
+  }
+  
+  .dark-mode .month-event,
+  .dark-mode .event-title-event,
+  .dark-mode .georgian-event {
+    color: var(--dark-text-primary);
+  }
+  
+  .dark-mode .text-event {
+    color: var(--dark-text-secondary);
+  }
+  
+  /* System preference based dark mode */
+  @media (prefers-color-scheme: dark) {
+    .system-mode .farakhor-flip-card-front {
+      background-color: var(--dark-bg-front);
+      color: var(--dark-text-primary);
+    }
+    
+    .system-mode .farakhor-flip-card-back {
+      background-color: var(--dark-bg-back);
+      color: var(--dark-text-primary);
+    }
+    
+    .system-mode .persian-day-event {
+      color: var(--dark-accent);
+    }
+    
+    .system-mode .month-event,
+    .system-mode .event-title-event,
+    .system-mode .georgian-event {
+      color: var(--dark-text-primary);
+    }
+    
+    .system-mode .text-event {
+      color: var(--dark-text-secondary);
+    }
+  }
+  
+  /* High contrast mode for accessibility */
+  @media (prefers-contrast: high) {
+    .light-mode .farakhor-flip-card-front,
+    .light-mode .farakhor-flip-card-back {
+      border: 2px solid #000000;
+    }
+    
+    .dark-mode .farakhor-flip-card-front,
+    .dark-mode .farakhor-flip-card-back {
+      border: 2px solid #FFFFFF;
+    }
+  }
+  
+  /* Transition for mode switching */
+  .farakhor-flip-card-front,
+  .farakhor-flip-card-back,
+  .persian-day-event,
+  .month-event,
+  .event-title-event,
+  .georgian-event,
+  .text-event {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Disable transitions for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .farakhor-flip-card-front,
+    .farakhor-flip-card-back,
+    .persian-day-event,
+    .month-event,
+    .event-title-event,
+    .georgian-event,
+    .text-event {
+      transition: none;
+    }
+  }

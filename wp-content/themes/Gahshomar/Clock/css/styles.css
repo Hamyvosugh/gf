@@ -1,0 +1,249 @@
+@font-face {
+    font-family: 'Digi Hamishe';
+    src: url('https://gahshomar.com/wp-content/uploads/2024/08/Digi-Hamishe-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#timezone-select {
+    text-align: center;
+    font-family: 'Digi Hamishe bold', sans-serif;
+    height: auto;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    width: auto;
+    min-width: 150px;
+    max-width: 100%;
+    background-color: transparent;
+    border: 1px;
+    color: var(--timezone-select-text);
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;
+    top: 22px;
+    left: 55%;
+    transform: translateX(-55%);
+    line-height: 1.5;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 15px;
+     
+}
+
+#timezone-select:hover {
+    animation: pulse 1s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        padding: 5px 10px;
+        background-color: orange;
+        color: white;
+    }
+    50% {
+        padding: 6px 11px;
+        background-color: white;
+        color: orange;
+        border-radius: 15px;
+    }
+}
+
+#timezone-select option {
+    text-align: center;
+    white-space: pre-wrap;
+    z-index: 1000;
+}
+
+.clock-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: auto;
+    padding: 10px 0 20px 20px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 15px !important;
+    left: 0;
+    z-index: 10000;
+}
+
+
+#local-time.clock, #international-time.clock {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    background-color: transparent;
+    background-image: var(--bg-local-dark); /* Background image for clocks */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.clock-logo {
+    content: var(--src-clock-logo);
+    position: absolute;
+    top: 30px;
+    width: 50px;
+    height: auto;
+    opacity: 80%;
+}
+
+.digital-clock {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1em;
+    font-family:'Quicksand', sans-serif;
+    font-weight: bold;
+    z-index: 1;
+    color: var(--digital-clock-text);
+}
+
+.clock .hour-hand, .clock .minute-hand, .clock .second-hand {
+    position: absolute;
+    bottom: 50%;
+    transform-origin: bottom;
+    transform: rotate(0deg);
+    z-index: 2;
+}
+
+.clock .hour-hand {
+    width: 8px;
+    height: 100px;
+    background: var(--hour-hand-background);
+    background-color: transparent;
+    border-radius: 2px 2px 0 0;
+    scale: 50%;
+}
+
+.clock .minute-hand {
+    width: 10px;
+    height: 95%;
+    background: var(--minute-hand-background);
+    background-color: transparent;
+    border-radius: 2px 2px 0 0;
+    scale: 50%;
+}
+
+.clock .second-hand {
+    width: 2px;
+    height: 70px;
+    background-color: var(--second-hand-color);
+    border-radius: 2px 2px 0 0;
+}
+
+@media (max-width: 796px) and (min-width: 654px) {
+    .clock-container {
+        flex-wrap: wrap;
+    }
+    
+    #local-time.clock, #international-time.clock {
+        width: 100px;
+        height: 100px;
+    }
+    .clock-logo {
+        top: 20px;
+        width: 40px;
+    }
+    .digital-clock {
+        bottom: 18px;
+        font-size: 0.8em;
+    }
+    .clock .hour-hand {
+      height: 75px;
+      width: 5px;
+    }
+    .clock .minute-hand {
+        height: 90px; 
+        width: 5px; 
+    }
+    .clock .second-hand {
+        height: 45px;
+        width: 1px;
+    }
+    #timezone-select {
+        font-size: 0.8em;
+        top: 12px;
+        left: 52%;
+        transform: translateX(-52%);
+    }  
+}
+
+@media (max-width: 655px) and (min-width: 50px) {
+    #local-time.clock, #international-time.clock {
+        width: 100px;
+        height: 100px;
+    }
+    .clock-logo {
+        top: 20px;
+        width: 40px;
+    }
+    .digital-clock {
+        bottom: 18px;
+        font-size: 0.8em;
+    }
+    .clock .hour-hand {
+      height: 75px;
+      width: 5px;
+    }
+    .clock .minute-hand {
+        height: 90px; 
+        width: 5px; 
+    }
+    .clock .second-hand {
+        height: 45px;
+        width: 1px;
+    }
+    #timezone-select {
+        font-size: 0.8em;
+        top: 12px;
+        left: 52%;
+        transform: translateX(-52%);
+    }  
+}
+
+:root {
+    --border-color: #333863;
+    --border-size: 20px;
+    --background-color: #f3f3f3;
+    --hour-hand-color: #ffffff;
+    --minute-hand-color: #ffffff;
+    --second-hand-color: #f5f5f5;
+    --bg-local-dark: url('https://gahshomar.com/wp-content/uploads/2024/08/background-clockface-darkmode-01.svg');
+    --bg-int-dark: url('https://gahshomar.com/wp-content/uploads/2024/08/background-clockface-darkmode-01.svg');
+    --hour-hand-background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-4.svg') no-repeat center/cover, transparent;
+    --minute-hand-background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-2.svg') no-repeat center/cover, transparent;
+    --src-clock-logo: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-6.svg');
+    --timezone-select-text: rgb(255, 255, 255);
+    --digital-clock-text: white;
+}
+
+.clock .center-circle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: url('https://gahshomar.com/wp-content/uploads/2024/08/Asset-8.svg') no-repeat center/cover, transparent; 
+    background-color: transparent;
+    border: 1px solid rgb(55, 55, 55);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+
+
+
+/* section 2*/
+
+
+

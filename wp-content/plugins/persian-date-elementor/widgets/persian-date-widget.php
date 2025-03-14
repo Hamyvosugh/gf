@@ -108,7 +108,7 @@ class Persian_Date_Widget extends Widget_Base {
 
         .persian-date {
             text-align: center;
-            font-size: 1.5em; /* Adjusted font size */
+            font-size: 1.8em; /* Adjusted font size */
             color: var(--persian-date-color); /* Use variable color */
             font-family: "Digi Hamishe", sans-serif;
             width: 100%; /* Ensure it takes the full width */
@@ -122,7 +122,7 @@ class Persian_Date_Widget extends Widget_Base {
         }
 
         .persian-month {
-            font-size: 2em; /* Adjusted font size */
+            font-size: 2.2em; /* Adjusted font size */
             font-weight: bold;
             background-color: transparent; /* Transparent background */
             color: var(--persian-month-color); /* Use variable color */
@@ -137,11 +137,11 @@ class Persian_Date_Widget extends Widget_Base {
         }
 
         .persian-day-of-week {
-            font-size: 25px; /* Adjusted font size */
+            font-size: 1.2em; /* Adjusted font size */
                         font-weight: bold;
 
             color: var(--persian-day-of-week-color); /* Use variable color */
-            margin-top: -10px;
+            margin-top: -5px;
             background-color: transparent; /* Transparent background */
             text-align: center;
         }

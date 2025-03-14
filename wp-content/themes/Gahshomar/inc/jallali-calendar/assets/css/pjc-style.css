@@ -1,0 +1,537 @@
+@font-face {
+    font-family: 'Digi Hamishe Bold';
+    src: url('https://gahshomar.com/wp-content/uploads/2024/08/Digi-Hamishe-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Digi Hamishe Regular';
+    src: url('https://gahshomar.com/wp-content/uploads/2024/08/Digi-Hamishe-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Main Calendar Container - Adjusted for Zero Margin */
+
+#pjc-calendar {
+    display: flex; /* تبدیل به Flexbox */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    direction: rtl;
+    background-color: #333863;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 100%;
+    height: auto; /* اجازه به تغییر ارتفاع براساس محتوا */
+    min-height: 100%; /* تنظیم حداقل ارتفاع برای یکسانی */
+    overflow: hidden;
+    margin: 10px auto; /* تنظیم حاشیه برای مرکز کردن */
+}
+
+/* General Dropdown Styles */
+.pjc-select {
+    background-color: #4c5494;
+    color: #ffffff;
+    border: none;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 8px;
+    font-family: 'Digi Hamishe Bold' !important;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 45%;
+}
+
+.pjc-calendar-controls {
+    display: flex; /* استفاده از Flexbox برای چیدمان المان‌ها */
+    justify-content: space-between; /* تنظیم فاصله بین المان‌ها */
+    align-items: center; /* تراز کردن المان‌ها به مرکز عمودی */
+    flex-wrap: wrap; /* اگر عرض کم شود، المان‌ها به خط بعدی می‌روند */
+    gap: 10px; /* اضافه کردن فاصله بین المان‌ها */
+    margin-bottom: 15px; /* فاصله از پایین برای زیباتر شدن */
+}
+
+#pjc-calendar-type, #pjc-month-select, #pjc-year-select {
+    width: auto; /* حذف تنظیمات عرض قدیمی */
+    flex: 1; /* ایجاد فضای مساوی بین المان‌ها */
+    min-width: 100px; /* تنظیم عرض حداقل برای جلوگیری از کوچک شدن بیش از حد */
+    margin: 0 5px; /* فاصله در اطراف */
+}
+
+/* Button for Returning to the Current Month */
+#pjc-return-button {
+    background-color: #ff840077;
+    color: #ffffff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Digi Hamishe Bold' !important;
+    margin-top: 10px;
+    display: block;
+    width: 90%;
+    max-width: 200px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(7px);
+
+}
+
+#pjc-return-button:hover {
+    background-color: #e67400;
+}
+
+/* Table Styling */
+.pjc-calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 20px;
+    table-layout: fixed;
+}
+
+/* Weekdays Styling نام روزها*/
+.pjc-calendar-table th {
+    background-color: #4c5494;
+    padding: 8px;
+    color: #ffffff;
+    font-family: 'Digi Hamishe Bold'!important;
+    border-radius: 8px;
+    font-size: 0.9em;
+}
+
+/* Days Styling */
+.pjc-calendar-table td {
+    background-color: #4c549472; 
+    color: #ffffff;
+    padding: 10px;
+    font-family: 'Digi Hamishe bold' !important;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 40px;          /* Fixed width */
+    height: 40px;         /* Fixed height */
+    overflow: hidden;
+    position: relative;
+    vertical-align: top;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.511);
+    font-size: 1.0em !important;
+}
+
+/* Ensure that table layout remains square */
+.pjc-calendar-table {
+    table-layout: fixed;  /* Use fixed layout to keep cells square */
+}
+
+.pjc-calendar-table td {
+    aspect-ratio: 1 / 1;  /* Maintain square aspect ratio */
+}
+/* Highlighted Current Day */
+.pjc-calendar-table td[style*="background-color: yellow;"] {
+    background-color: #ff840000 ;
+    
+    color: #ffffff;
+    font-family: 'Digi Hamishe Bold'!important;
+    transform: scale(1.1);
+   
+}
+
+/* Hover Effect on Days */
+.pjc-calendar-table td:hover {
+    background-color: #7F84B4;
+    transform: scale(1.2);
+   
+    
+   
+}
+
+/* Empty Days */
+.pjc-calendar-table td.empty {
+    background-color: transparent;
+    cursor: default;
+}
+
+/* Make Calendar More Responsive */
+@media (max-width: 480px) {
+    #pjc-calendar {
+        width: 100% !important;
+        padding: 15px;
+        overflow: visible; /* Allow content to expand */
+        height: 120% !important; /* Set height to adjust automatically */
+        min-height: 110%; /* Ensure it does not shrink below full screen */
+    }
+
+    .pjc-select, #pjc-return-button {
+        width: 100%;
+    }
+
+    .pjc-calendar-table td, .pjc-calendar-table th {
+        padding: 8px;
+        font-size: 0.8em;
+        
+
+    }
+
+    .pjc-calendar-table td {
+        width: 30px;
+        height: 30px;
+    }
+
+    .gregorian-months-range {
+      
+    box-shadow: none !important;
+     
+    padding-left: 0px !important;  
+     
+     background-color: transparent !important;
+     
+     
+
+        
+    }
+}
+
+/* Flip Container */
+.pjc-flip-container {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    height: auto; /* Adjust to keep container height dynamic */
+    overflow: hidden; /* Prevent any overflow */
+    
+}
+
+/* Flip Card */
+.pjc-flip-card {
+    width: 100%;
+    height: auto; /* Allow the card to grow based on content */
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position: relative;
+    min-height: 580px; /* Ensure the height matches the front */
+}
+
+/*  & Back پشت تقویم*/
+.pjc-back {
+    display: flex; /* استفاده از Flexbox برای همسانی محتوا */
+    flex-direction: column;
+    justify-content: flex-start; /* تنظیم محتوای داخلی از بالا */
+    align-items: center; /* مرکز کردن به صورت افقی */
+    width: 100%; /* تنظیم عرض به اندازه کامل */
+    height: 100%; /* اجازه به تغییر ارتفاع براساس محتوا */
+    min-height: 100%; /* تطابق با ارتفاع جلویی */
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #4c5494;
+    padding: 0px;
+    border-radius: 8px;
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* جلوگیری از خروج محتوا از کارت */
+    margin: 0; /* حذف هر گونه حاشیه اضافی */
+    z-index: 1;
+}
+.pjc-front {
+    
+    backface-visibility: hidden;
+    overflow: hidden; /* Ensure no overflow beyond the card */
+
+    
+}
+
+/* Ensure Back Matches the Front */
+
+.pjc-back {
+    transform: rotateY(180deg);
+}
+
+
+/* Flip the Card When Active */
+.pjc-flip-container.pjc-flipped .pjc-flip-card {
+    transform: rotateY(180deg);
+}
+
+/* Adjusting Flex Layout for Consistency */
+.pjc-front,
+.pjc-back {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 500px; /* Ensure the height of the back matches the front */
+}
+
+/* Style for the back button */
+#pjc-back-to-calendar {
+    position: absolute !important;
+    bottom: 25px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding: 10px 20px !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    font-family: 'Digi Hamishe Bold' !important;
+    border: none !important;
+    outline: none !important;
+    color: white !important;
+    background: #FF8200 !important;
+    display: inline-block !important; /* Ensures the button is treated as an inline element with block features, making the padding and dimensions active around the text */
+    text-align: center !important; /* Centers the text inside the button */
+    width: auto !important; /* Adjusts the width automatically to fit content and padding */
+    box-sizing: border-box !important; /* Ensures padding is included in width and height calculations */
+}
+
+#pjc-event-details p {
+    margin: 5px 0 0;
+    padding-top: 5px;
+    font-family: 'Digi Hamishe Bold'!important;
+    text-align: center;
+}
+
+
+
+
+
+
+/* برای اعمال استایل به کلاس‌های day-role */
+.day-role {
+    color: rgb(255, 255, 255) ; /* از !important استفاده کنید تا مطمئن شوید که این استایل‌ها اعمال می‌شوند */
+    font-size: 0.9em  ;
+    text-align: center  ;
+    
+}
+
+/* برای اعمال استایل به کلاس‌های pjc-day-name */
+.pjc-day-name {
+    color: rgb(255, 255, 255)  ; /* از !important استفاده کنید تا مطمئن شوید که این استایل‌ها اعمال می‌شوند */
+    font-size: 0.8em  ;
+    text-align: center ;
+    align-items: center;
+}
+ 
+
+
+
+
+
+
+
+
+
+
+.day-Thursday, .day-Saturday  {
+    display: flex; /* استفاده از Flexbox برای مرکز کردن محتوا */
+    justify-content: center; /* مرکز کردن به صورت افقی */
+    align-items: center; /* مرکز کردن به صورت عمودی */
+    text-align: center; /* اطمینان از تراز مرکزی متن */
+    height: 100%; /* مطمئن شوید که سلول به ارتفاع کامل پر شده */
+    width: 100%; /* مطمئن شوید که سلول به عرض کامل پر شده */
+    padding: 0; /* حذف هر گونه فاصله اضافی */
+}
+
+
+
+
+.event-header {
+    font-family: 'Digi Hamishe Bold', sans-serif;
+    text-align: center;
+    direction: rtl;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+/* سبک برای محتوای رویداد */
+.event-content {
+    font-family: 'Digi Hamishe bold', sans-serif !important;
+    text-align: right; /* تراز متن به سمت راست */
+    direction: rtl; /* جهت‌دهی از راست به چپ */
+    font-size: 1em;
+    color: #f9f9f9;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    margin-top: 25px;
+    padding-right: 5px; /* فاصله از سمت راست */
+    width: calc(100% - 10px); /* اطمینان از عدم خروج از کارت */
+    max-height: 250px; /* حداکثر ارتفاع */
+    overflow-y: auto; /* فعال کردن اسکرول در صورت نیاز */
+    overflow-x: hidden; /* جلوگیری از اسکرول افقی */
+    padding-right: 10px; /* اضافه کردن فاصله برای جلوگیری از خروج متن */
+    position: relative;
+    padding-bottom: 30px; /* فاصله برای جلوگیری از برخورد با دکمه */
+}
+
+/* دکمه بازگشت به تقویم */
+.event-back-button {
+    font-family: 'Digi Hamishe Bold', sans-serif !important;
+    background-color: #ff840000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transition: background-color 0.3s;
+    position: relative;
+    bottom: 0;
+}
+
+/* تغییر رنگ هنگام هاور */
+.event-back-button:hover {
+    background-color: #e67400;
+}
+
+/* اطمینان از راست‌چین بودن کل کارت پشتی */
+#pjc-event-details {
+    text-align: right; /* تراز کردن کل محتوا به سمت راست */
+    direction: rtl; /* جهت‌دهی از راست به چپ */
+    padding-right: 0px; /* فاصله از سمت راست */
+}
+
+/* تنظیم استایل برای هر ردیف رویداد */
+.event-row {
+    text-align: right;
+    direction: rtl;
+    padding-right: 5px; /* تنظیم فاصله از سمت راست */
+    margin-bottom: 10px;
+}
+
+/* سبک برای شماره، عنوان و متن رویداد */
+.event-number, .event-title, .event-text {
+    display: inline-block;
+    font-family: 'Digi Hamishe bold', sans-serif !important;
+}
+
+/* تنظیم استایل لوگو در کنار متن */
+.event-logo {
+    width: 30px; /* یا اندازه مناسب مورد نظرتان */
+    height: auto; /* حفظ نسبت تصویر */
+    display: inline-block; /* نمایش تصویر در کنار متن */
+    margin-left: 10px; /* فاصله مناسب از متن */
+    vertical-align: middle; /* تراز کردن با متن */
+}
+
+/* فعال‌سازی اسکرول در محتوای رویداد */
+.scrollable {
+    max-height: 250px; /* تنظیم ارتفاع حداکثر */
+    overflow-y: auto; /* فعال‌سازی اسکرول عمودی */
+    overflow-x: hidden; /* جلوگیری از اسکرول افقی */
+    padding-right: 10px; /* فاصله از سمت راست */
+    pointer-events: auto; /* اطمینان از عملکرد اسکرول */
+}
+/* فعال‌سازی اسکرول در محتوای رویداد */
+.scrollable-container {
+    max-height: 400px; /* حداکثر ارتفاع */
+    overflow-y: auto; /* فعال کردن اسکرول عمودی */
+    overflow-x: hidden; /* جلوگیری از اسکرول افقی */
+    padding-right: 10px; /* فاصله از سمت راست */
+    text-align: right; /* تراز کردن متن به سمت راست */
+    direction: rtl; /* جهت‌دهی از راست به چپ */
+}
+
+
+
+/* برای روزها */
+/* Style for Persian day numbers */
+.persian-day {
+    font-family: 'Digi Hamishe Bold', sans-serif !important;
+    font-size: 1.2em;
+    color: #ffffff;
+    text-align: center;
+    display: block;
+    direction: rtl; /* Right-to-left alignment */
+}
+
+/* Style for Gregorian day numbers */
+.gregorian-day {
+    font-family: 'Digi Hamishe Regular', sans-serif !important;
+    font-size: 0.7em; /* Smaller font size */
+    color: #cccccc; /* Lighter color for subtle appearance */
+    position: absolute;
+    bottom: 5px; /* Position near the bottom of the cell */
+    right: 5px; /* Position near the right edge of the cell */
+    text-align: right;
+    direction: ltr; /* Left-to-right alignment */
+}
+
+.gregorian-months-range {
+    background-color: #4c5494 ;
+            color: #ffffff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: "Quicksand Bold";
+            font-weight: 700;
+            font-size: 1.0em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            text-align: center;
+            display: inline-block;
+            bottom: 10px;
+            left: 10px;
+       
+}
+
+
+
+/* Optional: Style for overall calendar container to improve spacing */
+.pjc-calendar-table {
+    border-collapse: collapse;
+    width: 100%; /* Ensure full-width display */
+    table-layout: fixed; /* Fixed table layout for uniform cell sizes */
+}
+
+.pjc-calendar-table th, .pjc-calendar-table td {
+    padding: 10px;
+    border: 1px solid #444;
+}
+
+/* Style to adjust spacing and ensure readability */
+.pjc-calendar-table .persian-day,
+.pjc-calendar-table .gregorian-day {
+    display: block; /* Make sure each element is on its own line */
+}
+
+/* Highlighted Current Day */
+.current-day-highlight {
+    background-color: #ff840000 !important;
+    color: white !important;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+/* Updated Highlight Styles */
+.highlight-friday {
+    color: #FF8200 !important;
+    background-color: rgba(255, 132, 0, 0.155) !important;
+    z-index: 10 !important;
+    position: relative !important;
+        
+}
+
+.highlight-holiday {
+    color: #FF8200 !important;
+    background-color: rgba(255, 132, 0, 0.155) !important;
+    z-index: 10 !important;
+    position: relative !important;
+}
+
+.highlight-friday:hover {
+    background-color: #e67400 !important;
+ 
+}
+.highlight-holiday:hover {
+    background-color: #e67400 !important;
+}

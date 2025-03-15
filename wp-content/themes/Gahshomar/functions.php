@@ -70,50 +70,6 @@ add_action('after_setup_theme', 'gahshomar_child_setup');
 
 
 
-//+++++++++++++++++++++++++++++++++++++++++
-/**
- * Enqueue footer styles
- */
-function gahshomar_footer_styles() {
-	wp_enqueue_style(
-		'gahshomar-footer',
-		get_stylesheet_directory_uri() . '/assets/css/footer.css',
-		[],
-		HELLO_ELEMENTOR_CHILD_VERSION
-	);
-}
-add_action('wp_enqueue_scripts', 'gahshomar_footer_styles');
-
-//+++++++++++++++++++++++++++++++++++++++++
-/**
- * Enqueue clock scripts and styles
- */
-function gahshomar_clock_assets() {
-	wp_enqueue_script(
-		'gahshomar-timezones',
-		get_stylesheet_directory_uri() . '/Clock/js/timezones.js',
-		[],
-		HELLO_ELEMENTOR_CHILD_VERSION,
-		true
-	);
-
-	wp_enqueue_script(
-		'gahshomar-clock',
-		get_stylesheet_directory_uri() . '/Clock/js/clock.js',
-		['gahshomar-timezones'],
-		HELLO_ELEMENTOR_CHILD_VERSION,
-		true
-	);
-
-	wp_enqueue_style(
-		'gahshomar-clock-styles',
-		get_stylesheet_directory_uri() . '/Clock/css/styles.css',
-		[],
-		HELLO_ELEMENTOR_CHILD_VERSION
-	);
-}
-add_action('wp_enqueue_scripts', 'gahshomar_clock_assets');
-
 
 // hide header and footer for contact page mbile
 
@@ -568,3 +524,14 @@ function enqueue_event_cards_assets() {
 	);
 }
 add_action('wp_enqueue_scripts', 'enqueue_event_cards_assets');
+
+
+function enqueue_footer_styles() {
+    wp_enqueue_style(
+        'footer-style',
+        get_stylesheet_directory_uri() . '/assets/css/footer.css',
+        [],
+        HELLO_ELEMENTOR_CHILD_VERSION
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_footer_styles');

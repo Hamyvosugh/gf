@@ -1,0 +1,273 @@
+/**
+ * Farakhor Events CSS
+ */
+
+ :root {
+    --farakhor-primary-color: #3498db;
+    --farakhor-secondary-color: #2c3e50;
+    --farakhor-accent-color: #FF8200;
+    --farakhor-light-color: #ecf0f1;
+    --farakhor-dark-color: #2c3e50;
+    --farakhor-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --farakhor-transition: all 0.3s ease;
+    --farakhor-border-radius: 10px;
+}
+
+/* Container */
+.farakhor-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Digi Hamishe Bold;
+    direction: rtl;
+}
+
+/* Header */
+.farakhor-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+    .farakhor-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.farakhor-title {
+    color: var(--farakhor-dark-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+/* Filters */
+.farakhor-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.farakhor-search {
+    position: relative;
+    flex-grow: 1;
+    max-width: 300px;
+}
+
+.farakhor-search input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: var(--farakhor-transition);
+}
+
+.farakhor-search input:focus {
+    border-color: var(--farakhor-primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.farakhor-search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.farakhor-month-filter {
+    position: relative;
+}
+
+.farakhor-month-filter select {
+    padding: 10px 30px 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 14px;
+    appearance: none;
+    transition: var(--farakhor-transition);
+}
+
+.farakhor-month-filter select:focus {
+    border-color: var(--farakhor-primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.farakhor-arrow-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+}
+
+/* Cards Grid */
+.farakhor-cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+}
+
+@media (min-width: 576px) {
+    .farakhor-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .farakhor-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .farakhor-cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Card */
+.farakhor-card {
+    aspect-ratio: 1/1;
+    position: relative;
+    border-radius: var(--farakhor-border-radius);
+    overflow: hidden;
+    box-shadow: var(--farakhor-shadow);
+    transition: var(--farakhor-transition);
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+}
+
+.farakhor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.farakhor-card-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+.farakhor-card-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
+    z-index: 2;
+}
+
+.farakhor-card-content {
+    position: relative;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 3;
+    color: white;
+}
+
+/* Card Top Section - Fix alignment issues */
+.farakhor-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items at the top */
+    width: 100%; /* Ensure full width */
+}
+
+.farakhor-card-date {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align date to the right (RTL layout) */
+    max-width: 65%; /* Limit width to prevent overlap */
+}
+
+.farakhor-persian-date {
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: right;
+    width: 100%; /* Full width of container */
+}
+
+.farakhor-gregorian-date {
+    font-size: 12px;
+    opacity: 0.8;
+    text-align: right;
+    width: 100%; /* Full width instead of transform */
+    /* Remove the transform that was causing issues */
+    transform: none;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
+
+.farakhor-card-remain {
+    background-color: var(--farakhor-accent-color);
+    padding: 5px 8px; /* More balanced padding */
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap; /* Prevent text wrapping */
+    align-self: flex-start; /* Align to top of flex container */
+}
+
+.farakhor-card-title {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.farakhor-card-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.farakhor-tag, .farakhor-category {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 11px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: var(--farakhor-transition);
+}
+
+.farakhor-tag:hover, .farakhor-category:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.farakhor-category {
+    background-color: var(--farakhor-primary-color);
+}
+
+/* No Results */
+.farakhor-no-result {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background-color: white;
+    border-radius: var(--farakhor-border-radius);
+    box-shadow: var(--farakhor-shadow);
+}
+
+/* Loading spinner */
+.farakhor-loading {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
